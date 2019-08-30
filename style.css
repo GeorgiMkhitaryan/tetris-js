@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url("image.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.dashbord{
+    height: 900px;
+    width: 500px;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+}
+
+.root{
+    height: 700px;
+    width: 508px;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    background: rgb(0,20,226);
+    background: linear-gradient(90deg, rgba(0,20,226,1) 12%, rgba(0,211,255,1) 42%, rgba(152,69,252,1) 78%);
+    border-radius: 20px;
+    border: 5px solid black;
+}
+
+.coll{
+    display: flex;
+}
+.item{
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    border: 1px inset beige;
+}
+
+.active{
+    height: 50px;
+    width: 50px;
+}
+
+.ground{
+    background-image: url("aaa.png");
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+}
+
+.red{
+    background: rgb(36,0,19);
+    background: linear-gradient(90deg, rgba(36,0,19,1) 0%, rgba(231,68,4,1) 58%, rgba(255,0,138,1) 100%);
+}
+
+.green{
+    background: rgb(149,226,0);
+    background: linear-gradient(90deg, rgba(149,226,0,1) 18%, rgba(181,255,0,1) 42%, rgba(69,252,81,1) 88%);
+}
+
+.orange{
+    background: rgb(226,140,0);
+    background: linear-gradient(90deg, rgba(226,140,0,1) 18%, rgba(254,255,0,1) 42%, rgba(252,164,69,1) 88%);
+}
+
+.blue{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.chocolate{
+    background: rgb(143,62,0);
+    background: linear-gradient(90deg, rgba(143,62,0,1) 12%, rgba(172,98,1,1) 42%, rgba(252,188,69,1) 78%);
+}
+
+.blueviolet{
+    background: rgb(62,0,143);
+    background: linear-gradient(90deg, rgba(62,0,143,1) 12%, rgba(110,1,172,1) 42%, rgba(195,69,252,1) 78%);
+}
+
+.purple{
+    background: rgb(143,0,125);
+    background: linear-gradient(90deg, rgba(143,0,125,1) 12%, rgba(172,1,162,1) 42%, rgba(252,69,168,1) 78%);
+}

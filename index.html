@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="root"></div>
+<script>
+    var x = 3; y = 15;
+
+    var item = [
+        // I  figure
+        [
+            [1,0],
+            [2,0],
+            [3,0],
+            [
+                [
+                    [0,1],
+                    [-1,2],
+                    [-2,3],
+                    [-3,4],
+                ],
+                [
+                    [0,-1],
+                    [1,-2],
+                    [2,-3],
+                    [3,-4],
+                ],
+                [
+                    [0,1],
+                    [-1,2],
+                    [-2,3],
+                    [-3,4],
+                ],
+                [
+                    [0,-1],
+                    [1,-2],
+                    [2,-3],
+                    [3,-4],
+                ]
+            ],
+            ['red']
+        ],
+        // // O figure
+        [
+            [1,0],
+            [0,1],
+            [1,1],
+            [
+                [
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                ],
+                [
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                ],
+                [
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                ],
+                [
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                ]
+            ],
+            ['green']
+        ],
+        // Z figure
+        [
+            [1,0],
+            [-1,1],
+            [0,1],
+            [
+                [
+                    [-1,-1],
+                    [-2,0],
+                    [1,-1],
+                    [0,0],
+                ],
+                [
+                    [1,1],
+                    [2,0],
+                    [-1,1],
+                    [0,0],
+                ],
+                [
+                    [-1,-1],
+                    [-2,0],
+                    [1,-1],
+                    [0,0],
+                ],
+                [
+                    [1,1],
+                    [2,0],
+                    [-1,1],
+                    [0,0],
+                ]
+            ],
+            ['orange']
+        ],
+        // S figure
+        [
+            [1,0],
+            [1,1],
+            [2,1],
+            [
+                [
+                    [1,-1],
+                    [-1,0],
+                    [0,-1],
+                    [-2,0],
+                ],
+                [
+                    [-1,1],
+                    [1,0],
+                    [0,1],
+                    [2,0],
+                ],
+                [
+                    [1,-1],
+                    [-1,0],
+                    [0,-1],
+                    [-2,0],
+                ],
+                [
+                    [-1,1],
+                    [1,0],
+                    [0,1],
+                    [2,0],
+                ],
+            ],
+            ['blue']
+        ],
+        // // T Figure
+        [
+            [-1,1],
+            [0,1],
+            [1,1],
+            [
+                [
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                    [-1,1],
+                ],
+                [
+                    [-1,0],
+                    [1,-1],
+                    [1,-1],
+                    [0,-1],
+                ],
+                [
+                    [1,0],
+                    [0,1],
+                    [0,1],
+                    [0,1],
+                ],
+                [
+                    [0,0],
+                    [-1,0],
+                    [-1,0],
+                    [1,-1],
+                ],
+            ],
+            ['chocolate']
+        ],
+        // // J figure
+        [
+            [1,0],
+            [2,0],
+            [0,1],
+            [
+                [
+                    [0,0],
+                    [-1,1],
+                    [-2,2],
+                    [1,1],
+                ],
+                [
+                    [2,0],
+                    [0,0],
+                    [1,-1],
+                    [1,-1],
+                ],
+                [
+                    [-2,0],
+                    [1,-1],
+                    [0,0],
+                    [-1,1],
+                ],
+                [
+                    [0,0],
+                    [0,0],
+                    [1,-1],
+                    [-1,-1],
+                ],
+            ],
+            ['blueviolet']
+        ],
+        // // L Figure
+        [
+            [0,1],
+            [1,1],
+            [2,1],
+            [
+                [
+                    [1,0],
+                    [1,0],
+                    [-1,1],
+                    [-1,1],
+                ],
+                [
+                    [-1,0],
+                    [0,-1],
+                    [2,-2],
+                    [1,-1],
+                ],
+                [
+                    [0,0],
+                    [0,0],
+                    [-2,1],
+                    [-2,1],
+                ],
+                [
+                    [0,0],
+                    [-1,1],
+                    [1,0],
+                    [2,-1],
+                ],
+            ],
+            ['purple']
+        ],
+    ];
+
+    let root = document.querySelector('.root');
+    let dashbord = document.createElement('div');
+    root.appendChild(dashbord);
+    dashbord.setAttribute('class', 'dashbord');
+
+
+
+
+    for (let i = 18; i>0; i--) {
+        let coll = document.createElement('div');
+        coll.setAttribute('class', 'coll');
+
+        dashbord.appendChild(coll)
+        for (let j = 1; j<11; j++) {
+            let item = document.createElement('div');
+            coll.appendChild(item)
+            item.setAttribute('posx', `${j}`);
+            item.setAttribute('posy', `${i}`);
+            item.setAttribute('class', 'item');
+        }
+    }
+
+    let Random = 0;
+    let tetrisFigure;
+    let caunt
+
+
+    function CreateElement() {
+        caunt = 0;
+        function random() {
+            return Math.round(Math.random()*(item.length-1))
+        }
+
+        Random = random();
+        tetrisFigure = [
+            document.querySelector(`[posx="${x}"][posy = "${y}"]` ),
+            document.querySelector(`[posx = "${x + item[Random][0][0]}"][posy = "${y + item[Random][0][1]}"]`),
+            document.querySelector(`[posx = "${x + item[Random][1][0]}"][posy = "${y + item[Random][1][1]}"]`),
+            document.querySelector(`[posx = "${x + item[Random][2][0]}"][posy = "${y + item[Random][2][1]}"]`)
+        ];
+        for (let i = 0; i < tetrisFigure.length; i++){
+            tetrisFigure[i].classList.add('active')
+            tetrisFigure[i].classList.add(`${item[Random][4]}`);
+        }
+    }
+
+    function move() {
+        let theFall = true;
+        let positionItems = [
+            [tetrisFigure[0].getAttribute('posx'),tetrisFigure[0].getAttribute('posy')],
+            [tetrisFigure[1].getAttribute('posx'),tetrisFigure[1].getAttribute('posy')],
+            [tetrisFigure[2].getAttribute('posx'),tetrisFigure[2].getAttribute('posy')],
+            [tetrisFigure[3].getAttribute('posx'),tetrisFigure[3].getAttribute('posy')],
+        ];
+
+        for (let i = 0; i < positionItems.length; i++) {
+            if (positionItems[i][1] == 1 || positionItems[i][0] > 10 || document.querySelector(`[posx = "${positionItems[i][0]}"][posy = "${positionItems[i][1] -1}"]`).classList.contains('ground')) {
+                theFall = false;
+                break;
+            }
+        }
+        if (theFall){
+            for (let i = 0; i < tetrisFigure.length; i++){
+                tetrisFigure[i].classList.remove('active');
+                tetrisFigure[i].classList.remove(`${item[Random][4]}`);
+
+            }
+
+            tetrisFigure = [
+                document.querySelector(`[posx="${positionItems[0][0]}"][posy="${positionItems[0][1]-1}"]`),
+                document.querySelector(`[posx="${positionItems[1][0]}"][posy="${positionItems[1][1]-1}"]`),
+                document.querySelector(`[posx="${positionItems[2][0]}"][posy="${positionItems[2][1]-1}"]`),
+                document.querySelector(`[posx="${positionItems[3][0]}"][posy="${positionItems[3][1]-1}"]`),
+            ];
+
+
+            for (let i = 0; i < tetrisFigure.length; i++){
+                tetrisFigure[i].classList.add('active')
+                tetrisFigure[i].classList.add(`${item[Random][4]}`);
+            }
+        }
+        else{
+            for (let i = 0; i < tetrisFigure.length; i++){
+                tetrisFigure[i].classList.remove('active');
+                tetrisFigure[i].classList.remove(`${item[Random][4]}`);
+                tetrisFigure[i].classList.add('ground');
+            }
+
+            let groundItems = document.querySelectorAll('.ground');
+
+            for (let j = 1; j < 15; j++) {
+                let groundCaunt = 0
+                for (let k = 1; k < 11; k++) {
+                    if (document.querySelector(`[posx="${k}"][posy="${j}"]`).classList.contains('ground')){
+                        groundCaunt++
+                    }
+                    if (groundCaunt === 10){
+                        let item = document.querySelectorAll(`[posy="${j}"]`);
+                        console.log(item);
+                        for (let i = 0; i < item.length; i++){
+                            item[i].classList.remove('ground')
+                        }
+                        for (let i = groundItems.length-1; i >= 0; i--){
+                            if (groundItems[i].getAttribute('posy') > j){
+                                groundItems[i].classList.remove('ground')
+                                document.querySelector(`[posx="${groundItems[i].getAttribute('posx')}"][posy="${groundItems[i].getAttribute('posy')-1}"]`).classList.add('ground')
+                            }
+                        }
+                    }
+                }
+            }
+
+            for (let i = 0; i < groundItems.length; i++) {
+                if (groundItems[i].getAttribute("posy") == 15) {
+                    clearInterval(interval)
+                    alert("game over")
+                    break;
+                }
+            }
+
+            CreateElement()
+        }
+
+    }
+
+    CreateElement()
+
+    let interval = setInterval(()=>{
+        move()
+    },500)
+
+    addEventListener("keydown", event =>{
+        let flag;
+
+        let newPosition = [
+            [tetrisFigure[0].getAttribute('posx'),tetrisFigure[0].getAttribute('posy')],
+            [tetrisFigure[1].getAttribute('posx'),tetrisFigure[1].getAttribute('posy')],
+            [tetrisFigure[2].getAttribute('posx'),tetrisFigure[2].getAttribute('posy')],
+            [tetrisFigure[3].getAttribute('posx'),tetrisFigure[3].getAttribute('posy')],
+        ];
+
+        function control(a, arr = undefined) {
+            if (arr == undefined){
+                arr = [
+                    [0,0],
+                    [0,0],
+                    [0,0],
+                    [0,0]
+                ]
+            }
+            flag = true;
+            let newFigur = [
+                document.querySelector(`[posx="${+newPosition[0][0]+a+(arr[0][0])}"][posy="${+newPosition[0][1]+(arr[0][1])}"]`),
+                document.querySelector(`[posx="${+newPosition[1][0]+a+(arr[1][0])}"][posy="${+newPosition[1][1]+(arr[1][1])}"]`),
+                document.querySelector(`[posx="${+newPosition[2][0]+a+(arr[2][0])}"][posy="${+newPosition[2][1]+(arr[2][1])}"]`),
+                document.querySelector(`[posx="${+newPosition[3][0]+a+(arr[3][0])}"][posy="${+newPosition[3][1]+(arr[3][1])}"]`),
+            ];
+            for (let i = 0; i < newFigur.length; i++) {
+                if (!newFigur[i] || newFigur[i].classList.contains('ground')) {
+                    flag = false;
+                }
+                else if (newFigur[i].classList.contains('ground')) {
+                    flag = false;
+                }
+            }
+            if (flag){
+                for (let i = 0; i < tetrisFigure.length; i++){
+                    tetrisFigure[i].classList.remove('active');
+                    tetrisFigure[i].classList.remove(`${item[Random][4]}`);
+                }
+
+                tetrisFigure = newFigur;
+                for (let i = 0; i < newFigur.length; i++){
+                    newFigur[i].classList.add('active');
+                    tetrisFigure[i].classList.add(`${item[Random][4]}`);
+                }
+            }
+        }
+
+        if(event.keyCode == 37){
+            control(-1)
+        }
+        else if(event.keyCode == 39){
+
+            control(1)
+        }
+        else if(event.keyCode == 40){
+            move()
+        }
+        else if (event.keyCode == 38){
+            if (caunt == 4){
+                caunt = 0;
+                let arr = item[Random][3][caunt]
+                control(0,arr);
+                caunt+=1
+            }else{
+                let arr = item[Random][3][caunt]
+                control(0,arr);
+                caunt+=1
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
