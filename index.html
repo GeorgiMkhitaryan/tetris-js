@@ -271,7 +271,7 @@
 
     let Random = 0;
     let tetrisFigure;
-    let caunt
+    let caunt;
 
 
     function CreateElement() {
@@ -337,27 +337,7 @@
 
             let groundItems = document.querySelectorAll('.ground');
 
-            for (let j = 1; j < 15; j++) {
-                let groundCaunt = 0
-                for (let k = 1; k < 11; k++) {
-                    if (document.querySelector(`[posx="${k}"][posy="${j}"]`).classList.contains('ground')){
-                        groundCaunt++
-                    }
-                    if (groundCaunt === 10){
-                        let item = document.querySelectorAll(`[posy="${j}"]`);
-                        console.log(item);
-                        for (let i = 0; i < item.length; i++){
-                            item[i].classList.remove('ground')
-                        }
-                        for (let i = groundItems.length-1; i >= 0; i--){
-                            if (groundItems[i].getAttribute('posy') > j){
-                                groundItems[i].classList.remove('ground')
-                                document.querySelector(`[posx="${groundItems[i].getAttribute('posx')}"][posy="${groundItems[i].getAttribute('posy')-1}"]`).classList.add('ground')
-                            }
-                        }
-                    }
-                }
-            }
+
 
             for (let i = 0; i < groundItems.length; i++) {
                 if (groundItems[i].getAttribute("posy") == 15) {
@@ -367,9 +347,43 @@
                 }
             }
 
+            remove();
+
             CreateElement()
         }
 
+    }
+
+    function remove() {
+        let groundItems = document.querySelectorAll('.ground');
+
+        let isRemove = false;
+        for (let j = 1; j < 15; j++) {
+            let groundCaunt = 0
+            for (let k = 1; k < 11; k++) {
+                if (document.querySelector(`[posx="${k}"][posy="${j}"]`).classList.contains('ground')){
+                    groundCaunt++
+                }
+                if (groundCaunt === 10){
+                    isRemove = true;
+                    let item = document.querySelectorAll(`[posy="${j}"]`);
+
+                    for (let i = 0; i < item.length; i++){
+                        item[i].classList.remove('ground')
+                    }
+                    for (let i = groundItems.length-1; i >= 0; i--){
+                        if (groundItems[i].getAttribute('posy') > j){
+                            groundItems[i].classList.remove('ground')
+                            document.querySelector(`[posx="${groundItems[i].getAttribute('posx')}"][posy="${groundItems[i].getAttribute('posy')-1}"]`).classList.add('ground')
+                        }
+                    }
+                }
+            }
+        }
+
+        if(isRemove) {
+            remove(groundItems);
+        }
     }
 
     CreateElement()
